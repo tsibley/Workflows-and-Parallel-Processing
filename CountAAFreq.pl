@@ -48,8 +48,9 @@ while (my $line = <IN>) {
 			$flag = 0;
 		}elsif ($flag) {
 			unless ($line =~ /^\[\s+/) {
-				if ($line =~ /^(.*)\s+(\S+)\s+\[\d+\]$/ || $line =~ /^(.*)\s+(\S+)$/) {
+				if ($line =~ /^['"]?(.*)['"]\s+(.*)(?:\s+\[\d+\])?$/) {
 					my $aaSeq = uc $2;
+					$aaSeq =~ s/\s//g;
 					for (my $i = 0; $i < $nchar; $i++) {
 						$seqArr->[$i]->[$element] = substr($aaSeq, $i, 1);
 					}
