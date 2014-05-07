@@ -1,0 +1,10 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use Bio::AlignIO;
+
+my $in  = Bio::AlignIO->newFh( -fh => \*STDIN,  -format => 'fasta' );
+my $out = Bio::AlignIO->newFh( -fh => \*STDOUT, -format => 'nexus' );
+
+print { $out } $_ while $_ = scalar <$in>;
