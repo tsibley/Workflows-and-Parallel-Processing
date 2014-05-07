@@ -85,11 +85,11 @@ for (my $i = 0; $i < $nchar; $i++) {
 		$count = 0;
 		$flag++;
 		for (my $j = 0; $j < $ntax; $j++) {
-			if ($i >= $naStart->{$j} && $i <= $naEnd->{$j}) {
+			if ($i >= ($naStart->{$j} || 0) && $i <= ($naEnd->{$j} || 0)) {
 				if ($flag == 1) {
 					$totalCount++;
 				}				
-				if ($seqArr->[$i]->[$j] eq $aa) {
+				if (($seqArr->[$i]->[$j] || '') eq $aa) {
 					$count++;
 				}
 			}
