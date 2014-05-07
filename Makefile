@@ -15,3 +15,6 @@ export PATH:=.:$(PATH)
 
 %_aa_freq.tsv: %_aa.nxs
 	perl CountAAFreq.pl $< $@ 0.25 0.5
+
+clean:
+	rm -f *_aa_freq.tsv *.nxs *_aa.fa
