@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Try commenting this out to stop the assertion from failing.
+echo ">bogus"
+
+# This tiny program just repeats what it's given by executing the "cat"
+# command.  "exec" replaces the current program with the specified one.
+exec cat

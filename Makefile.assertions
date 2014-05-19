@@ -1,0 +1,28 @@
+SHELL := /bin/bash
+export SHELLOPTS := errexit:pipefail
+export PATH += :.
+
+# After renaming a bunch of sequences, test to make sure they all follow the
+# new standard format we expect: YYYY-MM-DD_gene_NNN
+#
+# Run it once using:
+#
+# 	make -f Makefile.assertions seqs_na.renamed.fa
+#
+# and see it fail.  Then try commenting out the line:
+#
+# 	echo ">bogus"
+#
+# in rename-seqs and re-running it to see the assertion catch the bogus name.
+seqs_na.renamed.fa: seqs_na.fa
+	rename-seqs < $< > $@
+	# 
+	# This tests that the output of the grep commands in `backticks` is empty
+	# (-z).  If there's any output, it means grep found a sequence name that
+	# didn't match our expected pattern, so we want the assertion to fail.  The
+	# first grep command pulls out all the sequence names (finds lines starting
+	# ("^") with ">") and the second grep finds all lines which don't
+	# (--invert) match our pattern.
+	# 
+	test -z "`grep '^>' $@ | grep --invert -E '^>\d{4}-\d{2}-\d{2}_(env|gag)_\d{3}$$'`"
+		|| (echo "Assertion failed!"; exit 1)
