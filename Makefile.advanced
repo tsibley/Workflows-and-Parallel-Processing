@@ -1,0 +1,6 @@
+NAME := Thomas
+hello:
+	@echo 'Hi, my name is $(NAME).'
+
+check_balance:
+	@echo 'Your balance is $$17.03.'
