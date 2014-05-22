@@ -1,0 +1,13 @@
+#!/bin/bash
+parallel \
+    --recstart '>' -N1 \
+    --halt 2 \
+    --pipe \
+    blastn \
+        -task blastn \
+        -db ./db/nucleotide/viroverse \
+        -query - \
+        -outfmt 6 \
+        -max_target_seqs 25 \
+    < blast-bench-139906937246.fa \
+    > results.tsv
