@@ -9,3 +9,7 @@ Everything else in this repository is supporting materials, though not all of
 it is used in the talk.  My plans were more extensive than I had time for!
 
 Note that all sequence data in `seqs_na.fa` was randomly fabricated.
+
+The text of my talk and supporting materials are licensed under the <a
+rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+Commons Attribution-ShareAlike 4.0 International License</a>.
